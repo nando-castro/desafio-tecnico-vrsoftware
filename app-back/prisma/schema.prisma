@@ -9,3 +9,34 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Student {
+  id        Int      @id @default(autoincrement())
+  name      String   @db.VarChar(20)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  courses Student_Course[]
+
+  @@map("students")
+}
+
+model Course {
+  id             Int      @id @default(autoincrement())
+  description    String   @db.VarChar(50)
+  course_content String
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  students Student_Course[]
+
+  @@map("courses")
+}
+
+model Student_Course {
+  id Int @id @default(autoincrement())
+  student    Student   @relation(fields: [studentId], references: [id])
+  studentId Int
+  course    Course   @relation(fields: [courseId], references: [id])
+  courseId Int
+
+  @@map("students_courses")
+}
