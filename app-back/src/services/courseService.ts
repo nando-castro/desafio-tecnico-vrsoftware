@@ -1,6 +1,6 @@
 import * as courseRepository from '../repositories/courseRepository'
 import { TypeCourse } from '../types/CourseTypes';
-import { conflictError, unprocessableEntity } from '../utils/errorUtils';
+import { conflictError, notFoundError, unprocessableEntity } from '../utils/errorUtils';
 
 export async function getCourses() {
   return await courseRepository.findCourses();
@@ -12,4 +12,10 @@ export async function createCourse(data: TypeCourse){
   if(courseExists) throw conflictError("Course exists!");
   
   await courseRepository.createCourse(data);
+}
+
+export async function updateCourse(id: number, data: TypeCourse){
+  const courseExists = await courseRepository.findCourseById(id);
+  if(!courseExists) throw notFoundError("Course not exists");
+  await courseRepository.updateCourse(id, data);
 }

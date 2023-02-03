@@ -12,3 +12,10 @@ export async function createCourse(req: Request, res: Response){
   await courseService.createCourse(data);
   res.status(201).send('Course Created');
 }
+
+export async function updateCourse(req: Request, res: Response){
+  const { id } = req.params;
+  const data: {description: string; course_content: string} = req.body;
+  await courseService.updateCourse(Number(id), data);
+  res.status(200).send('Course Updated');
+}

@@ -17,3 +17,20 @@ export async function findCourseByDescription(description: string) {
     });
     return rows;
 }
+
+export async function findCourseById(id: number){
+    const rows = await client.course.findUnique({
+        where: {
+            id
+        }
+    });
+    return rows;
+}
+
+export async function updateCourse(id: number, data: TypeCourse){
+    const rows = await client.course.update({
+        where: {id},
+        data
+    });
+    return rows;
+}
