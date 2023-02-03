@@ -11,3 +11,10 @@ export async function createStudent(req: Request, res: Response) {
     await studentService.createStudent(data);
     res.status(201).send("Student Created");
 }
+
+export async function updateStudent(req: Request, res: Response) {
+    const data: { name: string } = req.body;
+    const { id } = req.params;
+    await studentService.updateStudent(Number(id),data);
+    res.status(200).send("Student Updated");
+}
