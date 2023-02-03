@@ -8,5 +8,6 @@ const courseRouter = Router();
 courseRouter.get("/courses", courseController.getCourses);
 courseRouter.post("/course", schemaValidateMiddleware(courseSchema), courseController.createCourse);
 courseRouter.put("/course/:id", schemaValidateMiddleware(courseSchema), courseController.updateCourse);
+courseRouter.delete("/course/:id", courseController.deleteCourse);
 
 export { courseRouter };

@@ -19,3 +19,9 @@ export async function updateCourse(id: number, data: TypeCourse){
   if(!courseExists) throw notFoundError("Course not exists");
   await courseRepository.updateCourse(id, data);
 }
+
+export async function deleteCourse(id:number){
+  const courseExists = await courseRepository.findCourseById(id);
+  if(!courseExists) throw notFoundError("Course not exists");
+  await courseRepository.deleteCourse(id);
+}

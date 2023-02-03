@@ -34,3 +34,12 @@ export async function updateCourse(id: number, data: TypeCourse){
     });
     return rows;
 }
+
+export async function deleteCourse(id: number){
+    const rows = await client.course.delete({
+        where: {
+            id
+        }
+    });
+    return rows;
+}

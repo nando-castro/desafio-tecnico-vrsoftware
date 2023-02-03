@@ -19,3 +19,9 @@ export async function updateCourse(req: Request, res: Response){
   await courseService.updateCourse(Number(id), data);
   res.status(200).send('Course Updated');
 }
+
+export async function deleteCourse(req: Request, res: Response){
+  const { id } = req.params;
+  await courseService.deleteCourse(Number(id));
+  res.status(200).send("Course Deleted");
+}
