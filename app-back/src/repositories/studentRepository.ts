@@ -31,3 +31,10 @@ export async function updateStudent(id: number, data: TypeStudent) {
     });
     return rows;
 }
+
+export async function deleteStudent(id: number) {
+    const rows = await client.student.delete({
+        where: { id }
+    });
+    return rows;
+}

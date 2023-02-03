@@ -18,3 +18,9 @@ export async function updateStudent(id: number, data: TypeStudent) {
     if (!studentExists) throw notFoundError("Student not exists!");
     await studentRepository.updateStudent(id, data);
 }
+
+export async function deleteStudent(id: number) {
+    const studentExists = await studentRepository.findById(id);
+    if (!studentExists) throw notFoundError("Student not exists!");
+    await studentRepository.deleteStudent(id);
+}

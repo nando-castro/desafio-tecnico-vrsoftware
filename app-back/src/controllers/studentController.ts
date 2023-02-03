@@ -15,6 +15,12 @@ export async function createStudent(req: Request, res: Response) {
 export async function updateStudent(req: Request, res: Response) {
     const data: { name: string } = req.body;
     const { id } = req.params;
-    await studentService.updateStudent(Number(id),data);
+    await studentService.updateStudent(Number(id), data);
     res.status(200).send("Student Updated");
+}
+
+export async function deleteStudent(req: Request, res: Response) {
+    const { id } = req.params;
+    await studentService.deleteStudent(Number(id));
+    res.status(200).send("Student Deleted");
 }
