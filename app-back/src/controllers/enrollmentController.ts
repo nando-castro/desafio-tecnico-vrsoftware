@@ -6,3 +6,9 @@ export async function createEnrollment(req: Request, res: Response) {
     await enrollmentService.createEnrollment(data);
     res.status(200).send("Enrollment Created");
 }
+
+export async function deleteEnrollment(req: Request, res: Response) {
+    const { id } = req.params;
+    await enrollmentService.deleteEnrollment(Number(id));
+    res.status(200).send("Enrollment Deleted");
+}

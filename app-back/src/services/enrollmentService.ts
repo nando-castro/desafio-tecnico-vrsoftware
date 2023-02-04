@@ -1,4 +1,4 @@
-import { conflictError, notFoundError } from "../utils/errorUtils";
+import { conflictError, notFoundError, unauthorizedError } from "../utils/errorUtils";
 import { TypeEnrollment } from "../types/enrollmentTypes";
 import * as courseRepository from '../repositories/courseRepository';
 import * as studentRepository from '../repositories/studentRepository';
@@ -12,4 +12,10 @@ export async function createEnrollment(data: TypeEnrollment) {
     const studentEnrolled = await enrollmentRepository.findByStudentId(data.studentId, data.courseId);
     if (studentEnrolled) throw conflictError("Enrolled student.");
     await enrollmentRepository.createEnrollment(data);
+}
+
+export async function deleteEnrollment(id: number){
+    const enrollmentExists = await enrollmentRepository.findEnrollmentById(id);
+    if(!enrollmentExists) throw notFoundError("Enrollment not exists.");
+    await enrollmentRepository.deleteEnrollmentId(id);
 }
