@@ -24,3 +24,8 @@ export async function getEnrollmentByIdCourse(courseId: number){
     const rows = await client.enrollment.findMany({ where: { courseId }});
     return rows;
 }
+
+export async function getEnrollmentByStudentId(studentId: number){
+    const rows = await client.enrollment.findMany({ where: { studentId }});
+    return rows;
+}
