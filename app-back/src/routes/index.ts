@@ -1,8 +1,12 @@
 import { Router } from "express";
-import { testRouter } from "./testRouter";
+import { courseRouter } from "./courseRouter";
+import { enrollmentRouter } from "./enrollmentRouter";
+import { studentRouter } from "./studentRouter";
 
 const router = Router();
 
-router.use(testRouter);
+router.use(courseRouter);
+router.use(studentRouter);
+router.use(enrollmentRouter);
 
 export default router;
