@@ -12,8 +12,8 @@ export default function Button({ destiny, text, type, action, loading, backgroun
 }
 
 const Container = styled.button`
-  width: 326px;
-  height: 46px;
+  width: 100%;
+  height: 100%;
   padding: 10px;
   background: ${(props) => props.value || "#00164E"};
   border-radius: 5px;
@@ -28,7 +28,8 @@ const Container = styled.button`
     border-radius: 5px;
   }
 
-  @media(max-width: 390px) {
-    width: 100%;
+  @media(max-width: 440px) {
+    font-size: 12px;
+
   }
 `;

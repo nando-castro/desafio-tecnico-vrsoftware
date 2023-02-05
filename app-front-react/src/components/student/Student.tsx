@@ -4,11 +4,13 @@ import { api } from "../../services/api";
 import Button from "../button/Button";
 import { Item } from "../item/Item";
 import { FormStudent } from "./FormStudent";
+import { UIStudent } from "./UIStudent";
 
 export const Student = () => {
   const [studens, setStudents] = useState([]);
   const [update, setUpdate] = useState(false);
   const [openForm, setOpenForm] = useState(false);
+  const [openUI, setOpenUI] = useState(false);
   const [data, setData] = useState({
     id: 0,
     name: "",
@@ -52,13 +54,18 @@ export const Student = () => {
     setOpenForm(true);
   };
 
+  const sendDataUIStudent = (id: number, name: string) => {
+    setData({ id, name });
+    setOpenUI(true);
+  };
+
   const renderStudents = () => {
     return studens.map((i: any) => (
       <Content key={i.id}>
         <Item
           id={i.id}
           name={i.name}
-          action={handleDelete}
+          action={() => sendDataUIStudent(i.id, i.name)}
           actionDelete={() => handleDelete(i.id)}
           actionUpdate={() => sendDataUpdate(i.id, i.name)}
         />
@@ -68,7 +75,15 @@ export const Student = () => {
 
   return (
     <Container>
-      {openForm ? (
+      {openUI ? (
+        <UIStudent
+          openUI={openUI}
+          setOpenUI={setOpenUI}
+          data={data}
+          setData={setData}
+          setOpenForm={setOpenForm}
+        />
+      ) : openForm ? (
         <FormStudent
           setOpenForm={setOpenForm}
           update={update}
@@ -78,7 +93,11 @@ export const Student = () => {
         />
       ) : (
         <>
-          {studens.length > 0 ? renderStudents() : <Message>Não há alunos cadastrados!</Message>}
+          {studens.length > 0 ? (
+            renderStudents()
+          ) : (
+            <Message>Não há alunos cadastrados!</Message>
+          )}
           <Footer>
             <Button
               destiny={""}
@@ -124,4 +143,4 @@ const Infos = styled.main`
 const Message = styled.div`
   width: 100%;
   height: 100%;
-`
+`;
