@@ -27,4 +27,8 @@ const Container = styled.button`
     background: #36539B;
     border-radius: 5px;
   }
+
+  @media(max-width: 390px) {
+    width: 100%;
+  }
 `;

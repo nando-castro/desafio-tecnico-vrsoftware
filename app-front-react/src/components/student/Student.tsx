@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { api } from "../../services/api";
+import Button from "../button/Button";
 import { Item } from "../item/Item";
+import { FormStudent } from "./FormStuden";
 
 export const Student = () => {
   const [studens, setStudents] = useState([]);
+  const [update, setUpdate] = useState(false);
+  const [openForm, setOpenForm] = useState(false);
 
   useEffect(() => {
     async function getStudents() {
@@ -31,6 +35,7 @@ export const Student = () => {
         .delete(`/student/${id}`)
         .then((res) => {
           console.log(res.data);
+          setUpdate(!update);
         })
         .catch((err) => {
           console.log(err);
@@ -38,13 +43,58 @@ export const Student = () => {
     }
   };
 
-  return <Container>Student</Container>;
+  const renderStudents = () => {
+    return studens.map((i: any) => (
+      <Content key={i.id}>
+        <Item
+          id={i.id}
+          name={i.name}
+          action={handleDelete}
+          actionDelete={handleDelete}
+        />
+      </Content>
+    ));
+  };
+
+  return (
+    <Container>
+      {openForm ? (
+        <FormStudent openForm={openForm} setOpenForm={setOpenForm}  />
+      ) : (
+        <>
+          {renderStudents()}
+          <Footer>
+            <Button
+              destiny={""}
+              text={"Adicionar Aluno"}
+              type={"submit"}
+              action={() => setOpenForm(true)}
+              background={"#00B187"}
+            />
+          </Footer>
+        </>
+      )}
+    </Container>
+  );
 };
 
 const Container = styled.main`
   width: 100%;
   height: 100%;
   color: #000000;
+`;
 
-  background: red;
+const Content = styled.main`
+  width: 100%;
+  height: 50px;
+`;
+
+const Footer = styled.div`
+  width: 90%;
+  height: 60px;
+
+  position: fixed;
+  bottom: 42px;
+
+  border-radius: 0 0 20px 20px;
 `;

@@ -6,13 +6,13 @@ export const Item = ({
   name,
   action,
   actionDelete,
-  actionUpdate,
+//   actionUpdate,
 }: {
   id: number;
   name: string;
   action: any;
   actionDelete: any;
-  actionUpdate: any;
+//   actionUpdate: any;
 }) => {
   return (
     <Container key={id} className="center" onClick={action}>
@@ -22,7 +22,7 @@ export const Item = ({
           <MdDelete className="icon delete" onClick={actionDelete} />
         </Icon>
         <Icon>
-          <MdEdit className="icon update" onClick={actionUpdate} />
+          <MdEdit className="icon update" /*onClick={actionUpdate}*/ />
         </Icon>
       </Options>
     </Container>
@@ -34,20 +34,22 @@ const Container = styled.main`
   height: 100%;
   color: #000000;
 
+  border-bottom: 1px solid #000000;
+
   background: #d9d9d9;
 `;
 
 const Name = styled.div`
   width: 70%;
   height: 100%;
-  background-color: yellow;
+
+    cursor: default;
 `;
 
 const Options = styled.div`
   width: 30%;
   height: 100%;
   justify-content: space-evenly;
-  background-color: green;
 `;
 
 const Icon = styled.div`
@@ -55,6 +57,10 @@ const Icon = styled.div`
   height: 70%;
 
   border-radius: 8px;
+  
+  border: 1px solid #000;
+
+  cursor: pointer;
 
   .icon {
     font-size: 25px;
