@@ -68,8 +68,8 @@ export const FormCourse = ({
         name={"description"}
         onChange={changeInput}
       />
-      <Input
-        type={"text"}
+      <textarea
+        className="text-box"
         placeholder={"Ementa"}
         value={courseData.course_content || data.course_content}
         name={"course_content"}
@@ -91,6 +91,12 @@ const Container = styled.div`
   width: 100%;
   height: 100%;
   flex-direction: column;
+
+  .text-box {
+    width: 326px;
+    height: 150px;
+    margin-bottom: 20px;
+  }
 `;
 
 const Cancel = styled.div`

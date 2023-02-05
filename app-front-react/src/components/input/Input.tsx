@@ -45,4 +45,5 @@ const Content = styled.input`
   border: 1px solid #000;
   background: #ffffff;
   border-radius: 5px;
+  text-align: start;
 `;
