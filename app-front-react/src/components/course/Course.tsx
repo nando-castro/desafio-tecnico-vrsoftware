@@ -3,42 +3,42 @@ import styled from "styled-components";
 import { api } from "../../services/api";
 import Button from "../button/Button";
 import { Item } from "../item/Item";
-import { FormStudent } from "./FormStudent";
-import { UIStudent } from "./UIStudent";
+import { FormCourse } from "./FormCourse";
 
-export const Student = () => {
-  const [studens, setStudents] = useState([]);
+export const Course = () => {
+  const [courses, setCourses] = useState([]);
   const [update, setUpdate] = useState(false);
   const [openForm, setOpenForm] = useState(false);
   const [openUI, setOpenUI] = useState(false);
   const [data, setData] = useState({
     id: 0,
-    name: "",
+    description: "",
+    course_content: ""
   });
 
   useEffect(() => {
-    async function getStudents() {
+    async function getCourses() {
       await api
-        .get("/students")
+        .get("/courses")
         .then((res) => {
           console.log(res.data);
-          setStudents(res.data);
+          setCourses(res.data);
         })
         .catch((err) => {
           console.log(err);
         });
     }
-    getStudents();
+    getCourses();
   }, [update]);
 
   const handleDelete = (id: number) => {
     const response = window.confirm(
-      "Voce tem certeza que gostaria de apagar o registro do aluno?"
+      "Voce tem certeza que gostaria de apagar o registro do curso?"
     );
 
     if (response === true) {
       api
-        .delete(`/student/${id}`)
+        .delete(`/course/${id}`)
         .then((res) => {
           console.log(res.data);
           setUpdate(!update);
@@ -49,25 +49,25 @@ export const Student = () => {
     }
   };
 
-  const sendDataUpdate = (id: number, name: string) => {
-    setData({ id, name });
+  const sendDataUpdate = (id: number, description: string, course_content: string) => {
+    setData({ id, description, course_content });
     setOpenForm(true);
   };
 
-  const sendDataUIStudent = (id: number, name: string) => {
-    setData({ id, name });
+  const sendDataUICourse = (id: number, description: string, course_content: string) => {
+    setData({ id, description, course_content });
     setOpenUI(true);
   };
 
-  const renderStudents = () => {
-    return studens.map((i: any) => (
+  const renderCourses = () => {
+    return courses.map((i: any) => (
       <Content key={i.id}>
         <Item
           id={i.id}
           name={i.name}
-          action={() => sendDataUIStudent(i.id, i.name)}
+          action={() => sendDataUICourse(i.id, i.description, i.course_content)}
           actionDelete={() => handleDelete(i.id)}
-          actionUpdate={() => sendDataUpdate(i.id, i.name)}
+          actionUpdate={() => sendDataUpdate(i.id, i.description, i.course_content)}
         />
       </Content>
     ));
@@ -76,15 +76,9 @@ export const Student = () => {
   return (
     <Container>
       {openUI ? (
-        <UIStudent
-          openUI={openUI}
-          setOpenUI={setOpenUI}
-          data={data}
-          setData={setData}
-          setOpenForm={setOpenForm}
-        />
+        <></>
       ) : openForm ? (
-        <FormStudent
+        <FormCourse
           setOpenForm={setOpenForm}
           update={update}
           setUpdate={setUpdate}
@@ -93,15 +87,15 @@ export const Student = () => {
         />
       ) : (
         <>
-          {studens.length > 0 ? (
-            renderStudents()
+          {courses.length > 0 ? (
+            renderCourses()
           ) : (
-            <Message>Não há alunos cadastrados!</Message>
+            <Message>Não há cursos cadastrados!</Message>
           )}
           <Footer>
             <Button
               destiny={""}
-              text={"Adicionar Aluno"}
+              text={"Adicionar Curso"}
               type={"submit"}
               action={() => setOpenForm(true)}
               background={"#00B187"}
