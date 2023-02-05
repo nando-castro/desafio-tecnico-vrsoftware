@@ -15,8 +15,8 @@ export const Item = ({
 //   actionUpdate: any;
 }) => {
   return (
-    <Container key={id} className="center" onClick={action}>
-      <Name>{name}</Name>
+    <Container key={id} className="center" >
+      <Name onClick={action}>{name}</Name>
       <Options>
         <Icon>
           <MdDelete className="icon delete" onClick={actionDelete} />

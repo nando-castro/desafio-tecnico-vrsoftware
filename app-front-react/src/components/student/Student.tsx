@@ -23,7 +23,7 @@ export const Student = () => {
         });
     }
     getStudents();
-  }, []);
+  }, [update]);
 
   const handleDelete = (id: number) => {
     const response = window.confirm(
@@ -50,7 +50,7 @@ export const Student = () => {
           id={i.id}
           name={i.name}
           action={handleDelete}
-          actionDelete={handleDelete}
+          actionDelete={() => handleDelete(i.id)}
         />
       </Content>
     ));
@@ -59,7 +59,7 @@ export const Student = () => {
   return (
     <Container>
       {openForm ? (
-        <FormStudent openForm={openForm} setOpenForm={setOpenForm}  />
+        <FormStudent setOpenForm={setOpenForm} update={update} setUpdate={setUpdate} />
       ) : (
         <>
           {renderStudents()}
