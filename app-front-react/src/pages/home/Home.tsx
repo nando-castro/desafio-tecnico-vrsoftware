@@ -12,7 +12,7 @@ export const Home = () => {
   let currentTab: string = selected;
 
   return (
-    <Container>
+    <Container className="center">
       <Title>APP VR SOFTWARE</Title>
       <Content>
         <Top>
@@ -30,7 +30,11 @@ export const Home = () => {
           </Item>
         </Top>
         <Body>
-          {currentTab !== "" ? renderTab[currentTab] : "Desafio Técnico da VR Software!"}
+          {currentTab !== "" ? (
+            renderTab[currentTab]
+          ) : (
+            <Message>Desafio Técnico da VR Software!</Message>
+          )}
         </Body>
       </Content>
     </Container>
@@ -70,6 +74,7 @@ const Top = styled.div`
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.35);
 
   border-radius: 20px 20px 0 0;
+  color: #000000;
 
   .selected {
     color: #ffffff;
@@ -95,7 +100,13 @@ const Item = styled.div`
   }
 `;
 
-const Body = styled.div`
+const Body = styled.main`
   width: 100%;
   height: 100%;
+`;
+
+const Message = styled.div`
+  width: 100%;
+  height: 100%;
+  color: #000000;
 `;

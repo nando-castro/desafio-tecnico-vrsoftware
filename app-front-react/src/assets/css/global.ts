@@ -8,12 +8,17 @@ const GlobalStyle = createGlobalStyle`
     font-weight: 400;
     font-size: 18px;
     line-height: 23px;
-    color: #000000;
   }
   a{
     text-decoration: none;
   }
-  div, main{
+  div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .center {
     display: flex;
     align-items: center;
     justify-content: center;
