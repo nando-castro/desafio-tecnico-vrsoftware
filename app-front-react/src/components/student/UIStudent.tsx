@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { api } from "../../services/api";
 import Button from "../button/Button";
 
 export const UIStudent = ({
@@ -14,7 +15,28 @@ export const UIStudent = ({
   setData: any;
   setOpenForm: any;
 }) => {
-  console.log(data);
+  const handleDelete = () => {
+    const response = window.confirm(
+      "Voce tem certeza que gostaria de apagar o registro do aluno?"
+    );
+
+    if (response === true) {
+      api
+        .delete(`/student/${data.id}`)
+        .then((res) => {
+          window.location.reload();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  };
+
+  const sendDataUpdate = (id: number, name: string) => {
+    setData({ id, name });
+    setOpenUI(false);
+    setOpenForm(true);
+  };
   return (
     <Container>
       <Content>
@@ -34,7 +56,7 @@ export const UIStudent = ({
             destiny={""}
             text={"Editar"}
             type={"submit"}
-            action={() => setOpenForm(true)}
+            action={() => sendDataUpdate(data.id, data.name)}
             background={"#CB9406"}
           />
         </Division>
@@ -43,7 +65,7 @@ export const UIStudent = ({
             destiny={""}
             text={"Apagar"}
             type={"submit"}
-            action={() => setOpenForm(true)}
+            action={handleDelete}
             background={"#DC0000"}
           />
         </Division>
@@ -80,7 +102,7 @@ const Footer = styled.div`
 
   border-radius: 0 0 20px 20px;
 
-  @media(max-width: 330px){
+  @media (max-width: 330px) {
     height: 150px;
     flex-direction: column;
   }
@@ -89,5 +111,4 @@ const Footer = styled.div`
 const Division = styled.div`
   width: 100%;
   height: 100%;
-
 `;

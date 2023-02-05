@@ -71,7 +71,7 @@ export const FormCourse = ({
       <Input
         type={"text"}
         placeholder={"Ementa"}
-        value={courseData.course_content || data.cours_content}
+        value={courseData.course_content || data.course_content}
         name={"course_content"}
         onChange={changeInput}
       />

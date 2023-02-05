@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { api } from "../../services/api";
 import Button from "../button/Button";
 
 export const UICourse = ({
@@ -14,7 +15,32 @@ export const UICourse = ({
   setData: any;
   setOpenForm: any;
 }) => {
-  console.log(data);
+  const handleDelete = () => {
+    const response = window.confirm(
+      "Voce tem certeza que gostaria de apagar o registro do aluno?"
+    );
+
+    if (response === true) {
+      api
+        .delete(`/course/${data.id}`)
+        .then((res) => {
+          window.location.reload();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  };
+
+  const sendDataUpdate = (
+    id: number,
+    description: string,
+    course_content: string
+  ) => {
+    setData({ id, description, course_content });
+    setOpenUI(false);
+    setOpenForm(true);
+  };
   return (
     <Container>
       <Content>
@@ -35,7 +61,9 @@ export const UICourse = ({
             destiny={""}
             text={"Editar"}
             type={"submit"}
-            action={() => setOpenForm(true)}
+            action={() =>
+              sendDataUpdate(data.id, data.description, data.course_content)
+            }
             background={"#CB9406"}
           />
         </Division>
@@ -44,7 +72,7 @@ export const UICourse = ({
             destiny={""}
             text={"Apagar"}
             type={"submit"}
-            action={() => setOpenForm(true)}
+            action={handleDelete}
             background={"#DC0000"}
           />
         </Division>
