@@ -20,9 +20,7 @@ export const UICourse = ({
       <Content>
         <Description>Descrição: {data.description}</Description>
       </Content>
-      <Content>
-        <CourseContent>Ementa: {data.course_content}</CourseContent>
-      </Content>
+      <CourseContent>Ementa: {data.course_content}</CourseContent>
       <Footer>
         <Division>
           <Button
@@ -76,9 +74,10 @@ const Description = styled.div`
 
 const CourseContent = styled.main`
   width: 100%;
-  height: 100%;
-  color: #000;
+  height: auto;
   padding: 20px;
+  color: #000;
+  border-bottom: 1px solid #000;
 `;
 
 const Footer = styled.div`

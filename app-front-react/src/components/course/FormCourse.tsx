@@ -64,14 +64,14 @@ export const FormCourse = ({
         maxLength={50}
         type={"text"}
         placeholder={"Descrição"}
-        value={courseData || data.description}
+        value={courseData.description || data.description}
         name={"description"}
         onChange={changeInput}
       />
       <Input
         type={"text"}
         placeholder={"Ementa"}
-        value={courseData || data.cours_content}
+        value={courseData.course_content || data.cours_content}
         name={"course_content"}
         onChange={changeInput}
       />
