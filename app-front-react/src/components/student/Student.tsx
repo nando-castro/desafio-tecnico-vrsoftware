@@ -21,6 +21,23 @@ export const Student = () => {
     getStudents();
   }, []);
 
+  const handleDelete = (id: number) => {
+    const response = window.confirm(
+      "Voce tem certeza que gostaria de apagar o registro do cliente?"
+    );
+
+    if (response === true) {
+      api
+        .delete(`/student/${id}`)
+        .then((res) => {
+          console.log(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  };
+
   return <Container>Student</Container>;
 };
 
