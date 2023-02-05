@@ -1,16 +1,28 @@
 import styled from "styled-components";
 import { MdDelete, MdEdit } from "react-icons/md";
 
-export const Item = ({ id, name }: { id: number; name: string }) => {
+export const Item = ({
+  id,
+  name,
+  action,
+  actionDelete,
+  actionUpdate,
+}: {
+  id: number;
+  name: string;
+  action: any;
+  actionDelete: any;
+  actionUpdate: any;
+}) => {
   return (
-    <Container key={id} className="center">
+    <Container key={id} className="center" onClick={action}>
       <Name>{name}</Name>
       <Options>
         <Icon>
-          <MdDelete className="icon delete" />
+          <MdDelete className="icon delete" onClick={actionDelete} />
         </Icon>
         <Icon>
-          <MdEdit className="icon update" />
+          <MdEdit className="icon update" onClick={actionUpdate} />
         </Icon>
       </Options>
     </Container>
