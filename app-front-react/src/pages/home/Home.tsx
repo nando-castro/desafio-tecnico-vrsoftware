@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
+import { Course } from "../../components/course/Course";
 import { Student } from "../../components/student/Student";
 
 export const Home = () => {
@@ -7,6 +8,7 @@ export const Home = () => {
 
   let renderTab: any = {
     student: <Student />,
+    course: <Course />
   };
 
   let currentTab: string = selected;

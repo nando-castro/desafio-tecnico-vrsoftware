@@ -4,6 +4,7 @@ import { api } from "../../services/api";
 import Button from "../button/Button";
 import { Item } from "../item/Item";
 import { FormCourse } from "./FormCourse";
+import { UICourse } from "./UICourse";
 
 export const Course = () => {
   const [courses, setCourses] = useState([]);
@@ -13,7 +14,7 @@ export const Course = () => {
   const [data, setData] = useState({
     id: 0,
     description: "",
-    course_content: ""
+    course_content: "",
   });
 
   useEffect(() => {
@@ -49,12 +50,20 @@ export const Course = () => {
     }
   };
 
-  const sendDataUpdate = (id: number, description: string, course_content: string) => {
+  const sendDataUpdate = (
+    id: number,
+    description: string,
+    course_content: string
+  ) => {
     setData({ id, description, course_content });
     setOpenForm(true);
   };
 
-  const sendDataUICourse = (id: number, description: string, course_content: string) => {
+  const sendDataUICourse = (
+    id: number,
+    description: string,
+    course_content: string
+  ) => {
     setData({ id, description, course_content });
     setOpenUI(true);
   };
@@ -64,10 +73,12 @@ export const Course = () => {
       <Content key={i.id}>
         <Item
           id={i.id}
-          name={i.name}
+          name={i.description}
           action={() => sendDataUICourse(i.id, i.description, i.course_content)}
           actionDelete={() => handleDelete(i.id)}
-          actionUpdate={() => sendDataUpdate(i.id, i.description, i.course_content)}
+          actionUpdate={() =>
+            sendDataUpdate(i.id, i.description, i.course_content)
+          }
         />
       </Content>
     ));
@@ -76,7 +87,13 @@ export const Course = () => {
   return (
     <Container>
       {openUI ? (
-        <></>
+        <UICourse
+          openUI={openUI}
+          setOpenUI={setOpenUI}
+          data={data}
+          setData={setData}
+          setOpenForm={setOpenForm}
+        />
       ) : openForm ? (
         <FormCourse
           setOpenForm={setOpenForm}
