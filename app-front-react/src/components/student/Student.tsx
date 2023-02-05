@@ -78,7 +78,7 @@ export const Student = () => {
         />
       ) : (
         <>
-          {renderStudents()}
+          {studens.length > 0 ? renderStudents() : <Message>Não há alunos cadastrados!</Message>}
           <Footer>
             <Button
               destiny={""}
@@ -120,3 +120,8 @@ const Infos = styled.main`
   height: 100%;
   background-color: red;
 `;
+
+const Message = styled.div`
+  width: 100%;
+  height: 100%;
+`
