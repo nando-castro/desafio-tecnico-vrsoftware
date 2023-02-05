@@ -34,7 +34,6 @@ export const UICourse = ({
       await api
         .get("/students")
         .then((res) => {
-          console.log(res.data);
           setStudents(res.data);
         })
         .catch((err) => {
@@ -49,7 +48,6 @@ export const UICourse = ({
       await api
         .get(`/course/${data.id}/students`)
         .then((res) => {
-          console.log(res.data);
           setCourses(res.data);
         })
         .catch((err) => {
@@ -223,7 +221,6 @@ const Content = styled.div`
   flex-direction: column;
   border-radius: 0 0 20px 20px;
   color: #000000;
-  background-color: purple;
 `;
 
 const Description = styled.div`
@@ -260,7 +257,6 @@ const Footer = styled.div`
     flex-direction: column;
   }
 
-  background-color: aquamarine;
 `;
 
 const Division = styled.div`
@@ -268,7 +264,6 @@ const Division = styled.div`
   height: 50px;
   margin: 5px;
 
-  background-color: green;
 `;
 
 const Select = styled.select`

@@ -25,7 +25,6 @@ export const FormStudent = ({
     api
       .post(`/student`, { name })
       .then((res) => {
-        console.log(res.data);
         setUpdate(!update);
         setOpenForm(false);
       })
@@ -38,7 +37,6 @@ export const FormStudent = ({
     api
       .put(`/student/${data.id}`, {name})
       .then((res) => {
-        console.log(res.data);
         setUpdate(!update);
         setOpenForm(false);
       })

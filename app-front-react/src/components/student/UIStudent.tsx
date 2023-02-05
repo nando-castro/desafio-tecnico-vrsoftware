@@ -34,7 +34,6 @@ export const UIStudent = ({
       await api
         .get("/courses")
         .then((res) => {
-          console.log(res.data);
           setCourses(res.data);
         })
         .catch((err) => {
@@ -49,7 +48,6 @@ export const UIStudent = ({
       await api
         .get(`/student/${data.id}/courses`)
         .then((res) => {
-          console.log(res.data);
           setCoursesByStudentss(res.data);
         })
         .catch((err) => {

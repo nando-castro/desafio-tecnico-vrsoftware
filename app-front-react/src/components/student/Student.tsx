@@ -21,7 +21,6 @@ export const Student = () => {
       await api
         .get("/students")
         .then((res) => {
-          console.log(res.data);
           setStudents(res.data);
         })
         .catch((err) => {
@@ -40,7 +39,6 @@ export const Student = () => {
       api
         .delete(`/student/${id}`)
         .then((res) => {
-          console.log(res.data);
           setUpdate(!update);
         })
         .catch((err) => {

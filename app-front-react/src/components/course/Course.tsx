@@ -22,7 +22,6 @@ export const Course = () => {
       await api
         .get("/courses")
         .then((res) => {
-          console.log(res.data);
           setCourses(res.data);
         })
         .catch((err) => {
@@ -41,7 +40,6 @@ export const Course = () => {
       api
         .delete(`/course/${id}`)
         .then((res) => {
-          console.log(res.data);
           setUpdate(!update);
         })
         .catch((err) => {
