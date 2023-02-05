@@ -9,6 +9,10 @@ export const Student = () => {
   const [studens, setStudents] = useState([]);
   const [update, setUpdate] = useState(false);
   const [openForm, setOpenForm] = useState(false);
+  const [data, setData] = useState({
+    id: 0,
+    name: "",
+  });
 
   useEffect(() => {
     async function getStudents() {
@@ -43,6 +47,11 @@ export const Student = () => {
     }
   };
 
+  const sendDataUpdate = (id: number, name: string) => {
+    setData({ id, name });
+    setOpenForm(true);
+  };
+
   const renderStudents = () => {
     return studens.map((i: any) => (
       <Content key={i.id}>
@@ -51,6 +60,7 @@ export const Student = () => {
           name={i.name}
           action={handleDelete}
           actionDelete={() => handleDelete(i.id)}
+          actionUpdate={() => sendDataUpdate(i.id, i.name)}
         />
       </Content>
     ));
@@ -63,6 +73,8 @@ export const Student = () => {
           setOpenForm={setOpenForm}
           update={update}
           setUpdate={setUpdate}
+          data={data}
+          setData={setData}
         />
       ) : (
         <>

@@ -6,13 +6,13 @@ export const Item = ({
   name,
   action,
   actionDelete,
-//   actionUpdate,
+  actionUpdate,
 }: {
   id: number;
   name: string;
   action: any;
   actionDelete: any;
-//   actionUpdate: any;
+  actionUpdate: any;
 }) => {
   return (
     <Container key={id} className="center" >
@@ -22,7 +22,7 @@ export const Item = ({
           <MdDelete className="icon delete" onClick={actionDelete} />
         </Icon>
         <Icon>
-          <MdEdit className="icon update" /*onClick={actionUpdate}*/ />
+          <MdEdit className="icon update" onClick={actionUpdate} />
         </Icon>
       </Options>
     </Container>
