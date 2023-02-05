@@ -168,7 +168,9 @@ export const UIStudent = ({
           </Content>
           <StudentContent>
             Cursos matriculado:
-            {renderCoursesEnroll()}
+            {coursesByStudent.length > 0
+              ? renderCoursesEnroll()
+              : "Aluno não está matriculado em um curso!"}
           </StudentContent>
           <Footer>
             <Division>

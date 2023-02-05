@@ -173,7 +173,9 @@ export const UICourse = ({
           <Content>Ementa: {data.course_content}</Content>
           <CourseContent>
             Alunos matriculados:
-            {renderCourses()}
+            {students.length > 0
+              ? renderCourses()
+              : "O curso não possui alunos matriculados!"}
           </CourseContent>
           <Footer>
             <Division>
