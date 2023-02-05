@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { api } from "../../services/api";
 import Button from "../button/Button";
 import { Item } from "../item/Item";
-import { FormStudent } from "./FormStuden";
+import { FormStudent } from "./FormStudent";
 
 export const Student = () => {
   const [studens, setStudents] = useState([]);
@@ -59,7 +59,11 @@ export const Student = () => {
   return (
     <Container>
       {openForm ? (
-        <FormStudent setOpenForm={setOpenForm} update={update} setUpdate={setUpdate} />
+        <FormStudent
+          setOpenForm={setOpenForm}
+          update={update}
+          setUpdate={setUpdate}
+        />
       ) : (
         <>
           {renderStudents()}
@@ -97,4 +101,10 @@ const Footer = styled.div`
   bottom: 42px;
 
   border-radius: 0 0 20px 20px;
+`;
+
+const Infos = styled.main`
+  width: 100%;
+  height: 100%;
+  background-color: red;
 `;
