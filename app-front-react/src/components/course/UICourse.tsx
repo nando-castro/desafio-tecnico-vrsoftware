@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { api } from "../../services/api";
 import Button from "../button/Button";
+import { MdDelete } from "react-icons/md";
 
 export const UICourse = ({
   openUI,
@@ -18,7 +19,9 @@ export const UICourse = ({
 }) => {
   const [registerStudent, setRegisterStudent] = useState(false);
   const [students, setStudents] = useState<any[]>([]);
+  const [courses, setCourses] = useState<any[]>([]);
   const [id, setId] = useState<number>(0);
+  const [update, setUpdate] = useState<boolean>(false);
   const [enroll, setEnroll] = useState<{ courseId: number; studentId: number }>(
     {
       courseId: data.id,
@@ -39,13 +42,29 @@ export const UICourse = ({
         });
     }
     getStudents();
-  }, []);
+  }, [update]);
+
+  useEffect(() => {
+    async function getStudentsByCourse() {
+      await api
+        .get(`/course/${data.id}/students`)
+        .then((res) => {
+          console.log(res.data);
+          setCourses(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+    getStudentsByCourse();
+  }, [update]);
 
   const handleEnrollment = () => {
     api
       .post(`/enrollment`, { ...enroll, studentId: Number(id) })
       .then((res) => {
         setRegisterStudent(false);
+        setUpdate(!update);
       })
       .catch((err) => {
         console.log(err);
@@ -62,6 +81,23 @@ export const UICourse = ({
         .delete(`/course/${data.id}`)
         .then((res) => {
           window.location.reload();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  };
+
+  const handleDeleteEnroll = (id: number) => {
+    const response = window.confirm(
+      "Voce tem certeza que gostaria de apagar a matrícula do aluno?"
+    );
+
+    if (response === true) {
+      api
+        .delete(`/enrollment/${id}`)
+        .then((res) => {
+          setUpdate(!update);
         })
         .catch((err) => {
           console.log(err);
@@ -87,6 +123,21 @@ export const UICourse = ({
         </option>
       ));
     }
+  }
+
+  function renderCourses() {
+    return courses.map((i) => (
+      <StudentList key={i.id}>
+        <StudentName key={i.id}>{i.student.name}</StudentName>
+        <Button
+          destiny={""}
+          text={<MdDelete />}
+          type={"submit"}
+          action={() => handleDeleteEnroll(i.id)}
+          background={"#DC0000"}
+        />
+      </StudentList>
+    ));
   }
 
   const handleCancel = () => {
@@ -119,7 +170,11 @@ export const UICourse = ({
           <Content>
             <Description>Descrição: {data.description}</Description>
           </Content>
-          <CourseContent>Ementa: {data.course_content}</CourseContent>
+          <Content>Ementa: {data.course_content}</Content>
+          <CourseContent>
+            Alunos matriculados:
+            {renderCourses()}
+          </CourseContent>
           <Footer>
             <Division>
               <Button
@@ -164,7 +219,7 @@ const Container = styled.main`
 
 const Content = styled.div`
   width: 100%;
-  height: 75px;
+  height: auto;
   color: #000000;
 `;
 
@@ -179,11 +234,21 @@ const Description = styled.div`
 
 const CourseContent = styled.main`
   width: 100%;
-  height: auto;
+  height: 78%;
   padding: 10px;
   color: #000;
   border-bottom: 1px solid #000;
   word-break: break-all;
+
+  overflow-y: scroll;
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  @media (max-width: 380px) {
+    height: 67%;
+    flex-direction: column;
+  }
 `;
 
 const Footer = styled.div`
@@ -226,4 +291,16 @@ const Cancel = styled.div`
   border: 1px solid #000;
   margin-left: 20px;
   cursor: pointer;
+`;
+
+const StudentList = styled.div`
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+
+  border: 1px solid #000;
+`;
+
+const StudentName = styled.section`
+  width: 100%;
 `;

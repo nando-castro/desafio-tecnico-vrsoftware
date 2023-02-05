@@ -35,4 +35,8 @@ const Container = styled.button`
   @media(max-width: 460px) {
     font-size: 12px;
   }
+
+  @media(max-width: 375px) {
+    font-size: 11px;
+  }
 `;
