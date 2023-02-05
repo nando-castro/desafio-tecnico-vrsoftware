@@ -27,3 +27,10 @@ export async function deleteStudent(id: number) {
     if (enrolledStudent.length > 0) throw unauthorizedError("The student is enrolled in a course.")
     await studentRepository.deleteStudent(id);
 }
+
+export async function getCoursesEnrollment(id: number){
+    const studentExists = await studentRepository.findById(id);
+    if (!studentExists) throw notFoundError("Student not exists!");
+    const enrolledStudent = await enrollmentRepository.getEnrollmentByStudentId(id);
+    return enrolledStudent;
+}

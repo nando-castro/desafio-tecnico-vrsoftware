@@ -25,3 +25,9 @@ export async function deleteCourse(req: Request, res: Response){
   await courseService.deleteCourse(Number(id));
   res.status(200).send("Course Deleted");
 }
+
+export async function getStudentsEnrollment(req: Request, res: Response) {
+  const { id } = req.params;
+  const data = await courseService.getStudentsEnrollment(Number(id));
+  res.status(200).send(data);
+}
