@@ -84,6 +84,11 @@ export const UIStudent = ({
       ));
     }
   }
+
+  const handleCancel = () => {
+    setRegisterStudent(false);
+  };
+
   return (
     <Container>
       {registerStudent ? (
@@ -101,6 +106,7 @@ export const UIStudent = ({
                 type={"submit"}
                 action={handleEnrollment}
               />
+              <Cancel onClick={handleCancel}>Cancelar</Cancel>
             </Division>
           </Enroll>
         </Division>
@@ -194,4 +200,13 @@ const Enroll = styled.div`
   height: 400px;
 
   flex-direction: column;
+`;
+
+const Cancel = styled.div`
+  width: 100px;
+  height: 50px;
+
+  border: 1px solid #000;
+  margin-left: 20px;
+  cursor: pointer;
 `;
