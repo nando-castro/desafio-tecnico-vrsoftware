@@ -1,8 +1,15 @@
 import { useState } from "react";
 import styled from "styled-components";
+import { Student } from "../../components/student/Student";
 
 export const Home = () => {
   const [selected, setSelected] = useState("");
+
+  let renderTab: any = {
+    student: <Student />,
+  };
+
+  let currentTab: string = selected;
 
   return (
     <Container>
@@ -22,7 +29,9 @@ export const Home = () => {
             Cursos
           </Item>
         </Top>
-        <Body>Desafio Tecnico da VR Software!</Body>
+        <Body>
+          {currentTab !== "" ? renderTab[currentTab] : "Desafio Técnico da VR Software!"}
+        </Body>
       </Content>
     </Container>
   );
@@ -46,10 +55,11 @@ const Title = styled.div`
   font-weight: bold;
 `;
 
-const Content = styled.div`
+const Content = styled.section`
   width: 90%;
   height: 85%;
-  display: block;
+  display: flex;
+  flex-direction: column;
   border-radius: 23px;
   background: #ffffff;
 `;
