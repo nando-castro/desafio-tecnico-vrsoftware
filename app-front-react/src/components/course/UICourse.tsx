@@ -166,11 +166,9 @@ export const UICourse = ({
           </Enroll>
         </Division>
       ) : (
-        <>
-          <Content>
-            <Description>Descrição: {data.description}</Description>
-          </Content>
-          <Content>Ementa: {data.course_content}</Content>
+        <Content>
+          <Description>Descrição: {data.description}</Description>
+          <CourseContent>Ementa: {data.course_content}</CourseContent>
           <CourseContent>
             Alunos matriculados:
             {students.length > 0
@@ -207,7 +205,7 @@ export const UICourse = ({
               />
             </Division>
           </Footer>
-        </>
+        </Content>
       )}
     </Container>
   );
@@ -221,8 +219,11 @@ const Container = styled.main`
 
 const Content = styled.div`
   width: 100%;
-  height: auto;
+  height: 100%;
+  flex-direction: column;
+  border-radius: 0 0 20px 20px;
   color: #000000;
+  background-color: purple;
 `;
 
 const Description = styled.div`
@@ -236,7 +237,7 @@ const Description = styled.div`
 
 const CourseContent = styled.main`
   width: 100%;
-  height: 78%;
+  height: auto;
   padding: 10px;
   color: #000;
   border-bottom: 1px solid #000;
@@ -246,19 +247,11 @@ const CourseContent = styled.main`
   ::-webkit-scrollbar {
     display: none;
   }
-
-  @media (max-width: 380px) {
-    height: 67%;
-    flex-direction: column;
-  }
 `;
 
 const Footer = styled.div`
-  width: 90%;
-  height: 60px;
-
-  position: fixed;
-  bottom: 42px;
+  width: 100%;
+  height: 70px;
 
   border-radius: 0 0 20px 20px;
 
@@ -266,12 +259,16 @@ const Footer = styled.div`
     height: 150px;
     flex-direction: column;
   }
+
+  background-color: aquamarine;
 `;
 
 const Division = styled.div`
-  width: 100%;
-  height: 100%;
-  word-break: break-all;
+  width: 150px;
+  height: 50px;
+  margin: 5px;
+
+  background-color: green;
 `;
 
 const Select = styled.select`

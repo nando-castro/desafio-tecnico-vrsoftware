@@ -104,7 +104,7 @@ const Item = styled.div`
 
 const Body = styled.main`
   width: 100%;
-  height: 100%;
+  height: 95%;
 `;
 
 const Message = styled.div`

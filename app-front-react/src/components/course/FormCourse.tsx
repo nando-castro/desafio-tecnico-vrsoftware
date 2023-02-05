@@ -96,7 +96,13 @@ const Container = styled.div`
     width: 326px;
     height: 150px;
     margin-bottom: 20px;
+
+    @media (max-width: 365px) {
+      width: 100%;
   }
+  }
+
+
 `;
 
 const Cancel = styled.div`

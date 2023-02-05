@@ -165,41 +165,41 @@ export const UIStudent = ({
         <>
           <Content>
             <Name>{data.name}</Name>
+            <StudentContent>
+              Cursos matriculado:
+              {coursesByStudent.length > 0
+                ? renderCoursesEnroll()
+                : "Aluno não está matriculado em um curso!"}
+            </StudentContent>
+            <Footer>
+              <Division>
+                <Button
+                  destiny={""}
+                  text={"Matricular-se"}
+                  type={"submit"}
+                  action={() => setRegisterStudent(true)}
+                />
+              </Division>
+              <Division>
+                <Button
+                  destiny={""}
+                  text={"Editar"}
+                  type={"submit"}
+                  action={() => sendDataUpdate(data.id, data.name)}
+                  background={"#CB9406"}
+                />
+              </Division>
+              <Division>
+                <Button
+                  destiny={""}
+                  text={"Apagar"}
+                  type={"submit"}
+                  action={handleDelete}
+                  background={"#DC0000"}
+                />
+              </Division>
+            </Footer>
           </Content>
-          <StudentContent>
-            Cursos matriculado:
-            {coursesByStudent.length > 0
-              ? renderCoursesEnroll()
-              : "Aluno não está matriculado em um curso!"}
-          </StudentContent>
-          <Footer>
-            <Division>
-              <Button
-                destiny={""}
-                text={"Matricular-se"}
-                type={"submit"}
-                action={() => setRegisterStudent(true)}
-              />
-            </Division>
-            <Division>
-              <Button
-                destiny={""}
-                text={"Editar"}
-                type={"submit"}
-                action={() => sendDataUpdate(data.id, data.name)}
-                background={"#CB9406"}
-              />
-            </Division>
-            <Division>
-              <Button
-                destiny={""}
-                text={"Apagar"}
-                type={"submit"}
-                action={handleDelete}
-                background={"#DC0000"}
-              />
-            </Division>
-          </Footer>
         </>
       )}
     </Container>
@@ -214,8 +214,13 @@ const Container = styled.main`
 
 const Content = styled.div`
   width: 100%;
-  height: 75px;
+  height: 100%;
   color: #000000;
+
+  flex-direction: column;
+
+  border-radius: 0 0 20px 20px;
+
 `;
 
 const Name = styled.div`
@@ -228,9 +233,7 @@ const Name = styled.div`
 
 const Footer = styled.div`
   width: 100%;
-  height: 60px;
-
-  position: fixed;
+  height: 70px;
 
   border-radius: 0 0 20px 20px;
 
@@ -238,12 +241,14 @@ const Footer = styled.div`
     height: 150px;
     flex-direction: column;
   }
+
 `;
 
 const Division = styled.div`
-  width: 100%;
-  height: 100%;
+  width: 150px;
+  height: 50px;
   word-break: break-all;
+  margin: 5px;
 `;
 
 const Select = styled.select`
@@ -281,7 +286,7 @@ const CourseName = styled.section`
 
 const StudentContent = styled.main`
   width: 100%;
-  height: 78%;
+  height: 90%;
   padding: 10px;
   color: #000;
   border-bottom: 1px solid #000;
@@ -292,8 +297,4 @@ const StudentContent = styled.main`
     display: none;
   }
 
-  @media (max-width: 370px) {
-    height: 67%;
-    flex-direction: column;
-  }
 `;

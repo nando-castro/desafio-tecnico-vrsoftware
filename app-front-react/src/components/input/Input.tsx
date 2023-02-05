@@ -46,4 +46,8 @@ const Content = styled.input`
   background: #ffffff;
   border-radius: 5px;
   text-align: start;
+
+  @media (max-width: 365px) {
+    width: 100%;
+  }
 `;

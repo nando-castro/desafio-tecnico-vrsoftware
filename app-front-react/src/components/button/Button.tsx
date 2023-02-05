@@ -36,7 +36,7 @@ const Container = styled.button`
     font-size: 12px;
   }
 
-  @media(max-width: 375px) {
+  @media(max-width: 380px) {
     font-size: 11px;
   }
 `;
