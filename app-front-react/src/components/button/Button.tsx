@@ -28,8 +28,11 @@ const Container = styled.button`
     border-radius: 5px;
   }
 
-  @media(max-width: 440px) {
-    font-size: 12px;
+  @media(max-width: 530px) {
+    font-size: 14px;
+  }
 
+  @media(max-width: 460px) {
+    font-size: 12px;
   }
 `;

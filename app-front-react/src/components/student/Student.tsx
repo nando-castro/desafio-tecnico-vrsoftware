@@ -7,7 +7,7 @@ import { FormStudent } from "./FormStudent";
 import { UIStudent } from "./UIStudent";
 
 export const Student = () => {
-  const [studens, setStudents] = useState([]);
+  const [students, setStudents] = useState([]);
   const [update, setUpdate] = useState(false);
   const [openForm, setOpenForm] = useState(false);
   const [openUI, setOpenUI] = useState(false);
@@ -60,7 +60,7 @@ export const Student = () => {
   };
 
   const renderStudents = () => {
-    return studens.map((i: any) => (
+    return students.map((i: any) => (
       <Content key={i.id}>
         <Item
           id={i.id}
@@ -93,7 +93,7 @@ export const Student = () => {
         />
       ) : (
         <>
-          {studens.length > 0 ? (
+          {students.length > 0 ? (
             renderStudents()
           ) : (
             <Message>Não há alunos cadastrados!</Message>

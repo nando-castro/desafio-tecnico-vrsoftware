@@ -15,7 +15,7 @@ export const Item = ({
   actionUpdate: any;
 }) => {
   return (
-    <Container key={id} className="center" >
+    <Container key={id} className="center">
       <Name onClick={action}>{name}</Name>
       <Options>
         <Icon>
@@ -42,8 +42,8 @@ const Container = styled.main`
 const Name = styled.div`
   width: 70%;
   height: 100%;
-
-    cursor: default;
+  word-break: break-all;
+  cursor: default;
 `;
 
 const Options = styled.div`
@@ -57,7 +57,7 @@ const Icon = styled.div`
   height: 70%;
 
   border-radius: 8px;
-  
+
   border: 1px solid #000;
 
   cursor: pointer;
