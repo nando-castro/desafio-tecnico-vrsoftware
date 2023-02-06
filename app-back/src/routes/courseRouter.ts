@@ -10,4 +10,7 @@ courseRouter.post("/course", schemaValidateMiddleware(courseSchema), courseContr
 courseRouter.put("/course/:id", schemaValidateMiddleware(courseSchema), courseController.updateCourse);
 courseRouter.delete("/course/:id", courseController.deleteCourse);
 
+courseRouter.get("/course/:id/students", courseController.getStudentsEnrollment);
+
+
 export { courseRouter };

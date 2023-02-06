@@ -28,3 +28,10 @@ export async function deleteCourse(id: number) {
   if (emptyCourse.length > 0) throw unauthorizedError("The course has enrolled students.")
   await courseRepository.deleteCourse(id);
 }
+
+export async function getStudentsEnrollment(id: number){
+  const courseExists = await courseRepository.findCourseById(id);
+  if (!courseExists) throw notFoundError("Course not exists");
+  const enrolledCourses = await enrollmentRepository.getEnrollmentByIdCourse(id);
+  return enrolledCourses;
+}

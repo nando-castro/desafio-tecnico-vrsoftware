@@ -21,11 +21,11 @@ export async function findEnrollmentById(id: number){
 }
 
 export async function getEnrollmentByIdCourse(courseId: number){
-    const rows = await client.enrollment.findMany({ where: { courseId }});
+    const rows = await client.enrollment.findMany({ where: { courseId }, include: { student: { select: { name: true }} }});
     return rows;
 }
 
 export async function getEnrollmentByStudentId(studentId: number){
-    const rows = await client.enrollment.findMany({ where: { studentId }});
+    const rows = await client.enrollment.findMany({ where: { studentId }, include: { course: { select: { description: true }} } });
     return rows;
 }

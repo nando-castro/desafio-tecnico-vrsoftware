@@ -10,4 +10,6 @@ studentRouter.post("/student", schemaValidateMiddleware(studentSchema), studentC
 studentRouter.put("/student/:id", schemaValidateMiddleware(studentSchema), studentController.updateStudent);
 studentRouter.delete("/student/:id", studentController.deleteStudent);
 
+studentRouter.get("/student/:id/courses", studentController.getCoursesEnrollment);
+
 export { studentRouter };
