@@ -17,7 +17,7 @@ export const FormStudent = ({
   data: any;
   setData: any;
 }) => {
-  const [name, setName] = useState("");
+  const [name, setName] = useState("" || data.name);
 
   const handleCreateStudent = (e: any) => {
     e.preventDefault();
@@ -56,7 +56,7 @@ export const FormStudent = ({
         maxLength={20}
         type={"text"}
         placeholder={"Nome"}
-        value={name || data.name}
+        value={name}
         name={"name"}
         onChange={(e: any) => setName(e.target.value)}
       />

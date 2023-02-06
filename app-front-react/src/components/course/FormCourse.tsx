@@ -18,8 +18,8 @@ export const FormCourse = ({
   setData: any;
 }) => {
   const [courseData, setCourseData] = useState({
-    description: "",
-    course_content: "",
+    description: "" || data.description,
+    course_content: "" || data.course_content,
   });
   function changeInput(e: any) {
     setCourseData({ ...courseData, [e.target.name]: e.target.value });
@@ -62,14 +62,14 @@ export const FormCourse = ({
         maxLength={50}
         type={"text"}
         placeholder={"Descrição"}
-        value={courseData.description || data.description}
+        value={courseData.description}
         name={"description"}
         onChange={changeInput}
       />
       <textarea
         className="text-box"
         placeholder={"Ementa"}
-        value={courseData.course_content || data.course_content}
+        value={courseData.course_content}
         name={"course_content"}
         onChange={changeInput}
       />
