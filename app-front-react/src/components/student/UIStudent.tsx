@@ -141,7 +141,6 @@ export const UIStudent = ({
   return (
     <Container>
       {registerStudent ? (
-        <Division>
           <Enroll>
             <Division>Aluno: {data.name}</Division>
             <Select name="id" onChange={(e: any) => setId(e.target.value)}>
@@ -158,7 +157,6 @@ export const UIStudent = ({
               <Cancel onClick={handleCancel}>Cancelar</Cancel>
             </Division>
           </Enroll>
-        </Division>
       ) : (
         <>
           <Content>
@@ -218,7 +216,6 @@ const Content = styled.div`
   flex-direction: column;
 
   border-radius: 0 0 20px 20px;
-
 `;
 
 const Name = styled.div`
@@ -239,24 +236,27 @@ const Footer = styled.div`
     height: 150px;
     flex-direction: column;
   }
-
 `;
 
 const Division = styled.div`
-  width: 150px;
-  height: 50px;
+  width: 260px;
+  height: 80px;
   word-break: break-all;
   margin: 5px;
 `;
 
 const Select = styled.select`
-  width: 200px;
-  height: 100px;
+  width: 250px;
+  height: 50px;
+
+  @media (max-width: 280px) {
+    width: 100%;
+  }
 `;
 
 const Enroll = styled.div`
-  width: 100;
-  height: 400px;
+  width: 100%;
+  height: 100%;
 
   flex-direction: column;
 `;
@@ -294,5 +294,4 @@ const StudentContent = styled.main`
   ::-webkit-scrollbar {
     display: none;
   }
-
 `;

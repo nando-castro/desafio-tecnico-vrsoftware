@@ -145,7 +145,6 @@ export const UICourse = ({
   return (
     <Container>
       {registerStudent ? (
-        <Division>
           <Enroll>
             <Division>Curso: {data.description}</Division>
             <Select name="id" onChange={(e: any) => setId(e.target.value)}>
@@ -162,7 +161,6 @@ export const UICourse = ({
               <Cancel onClick={handleCancel}>Cancelar</Cancel>
             </Division>
           </Enroll>
-        </Division>
       ) : (
         <Content>
           <Description>Descrição: {data.description}</Description>
@@ -261,21 +259,29 @@ const Footer = styled.div`
 
 const Division = styled.div`
   width: 150px;
-  height: 50px;
+  height: 80px;
   margin: 5px;
 
 `;
 
 const Select = styled.select`
-  width: 200px;
-  height: 100px;
+  width: 250px;
+  height: 50px;
+
+  @media(max-width: 280px){
+    width: 100%;
+  }
 `;
 
 const Enroll = styled.div`
-  width: 100;
-  height: 400px;
+  width: 100%;
+  height: 100%;
 
   flex-direction: column;
+
+  @media(max-width: 280px){
+    width: 100%;
+  }
 `;
 
 const Cancel = styled.div`

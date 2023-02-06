@@ -8,7 +8,7 @@ export const Home = () => {
 
   let renderTab: any = {
     student: <Student />,
-    course: <Course />
+    course: <Course />,
   };
 
   let currentTab: string = selected;

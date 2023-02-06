@@ -103,7 +103,7 @@ export const Course = () => {
       ) : (
         <>
           {courses.length > 0 ? (
-            renderCourses()
+            <ContentBody>{renderCourses()}</ContentBody>
           ) : (
             <Message>Não há cursos cadastrados!</Message>
           )}
@@ -131,6 +131,16 @@ const Container = styled.main`
 const Content = styled.main`
   width: 100%;
   height: 50px;
+`;
+
+const ContentBody = styled.main`
+  width: 100%;
+  height: 90%;
+
+  overflow-y: scroll;
+  ::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 const Footer = styled.div`

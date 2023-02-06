@@ -92,7 +92,7 @@ export const Student = () => {
       ) : (
         <>
           {students.length > 0 ? (
-            renderStudents()
+            <ContentBody>{renderStudents()}</ContentBody>
           ) : (
             <Message>Não há alunos cadastrados!</Message>
           )}
@@ -122,12 +122,19 @@ const Content = styled.main`
   height: 50px;
 `;
 
-const Footer = styled.div`
-  width: 90%;
-  height: 60px;
+const ContentBody = styled.main`
+  width: 100%;
+  height: 90%;
 
-  position: fixed;
-  bottom: 42px;
+  overflow-y: scroll;
+  ::-webkit-scrollbar {
+    display: none;
+  }
+`;
+
+const Footer = styled.div`
+  width: 100%;
+  height: 60px;
 
   border-radius: 0 0 20px 20px;
 `;
