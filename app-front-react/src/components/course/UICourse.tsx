@@ -145,32 +145,34 @@ export const UICourse = ({
   return (
     <Container>
       {registerStudent ? (
-          <Enroll>
-            <Division>Curso: {data.description}</Division>
-            <Select name="id" onChange={(e: any) => setId(e.target.value)}>
-              <option></option>
-              {renderStudents()}
-            </Select>
-            <Division>
-              <Button
-                destiny={""}
-                text={"Matricular aluno"}
-                type={"submit"}
-                action={handleEnrollment}
-              />
-              <Cancel onClick={handleCancel}>Cancelar</Cancel>
-            </Division>
-          </Enroll>
+        <Enroll>
+          <Division>Curso: {data.description}</Division>
+          <Select name="id" onChange={(e: any) => setId(e.target.value)}>
+            <option></option>
+            {renderStudents()}
+          </Select>
+          <Division>
+            <Button
+              destiny={""}
+              text={"Matricular aluno"}
+              type={"submit"}
+              action={handleEnrollment}
+            />
+            <Cancel onClick={handleCancel}>Cancelar</Cancel>
+          </Division>
+        </Enroll>
       ) : (
         <Content>
           <Description>Descrição: {data.description}</Description>
-          <CourseContent>Ementa: {data.course_content}</CourseContent>
-          <CourseContent>
-            Alunos matriculados:
-            {students.length > 0
-              ? renderCourses()
-              : "O curso não possui alunos matriculados!"}
-          </CourseContent>
+          <ContentBody>
+            <CourseContent>Ementa: {data.course_content}</CourseContent>
+            <CourseContent>
+              Alunos matriculados:
+              {students.length > 0
+                ? renderCourses()
+                : "O curso não possui alunos matriculados!"}
+            </CourseContent>
+          </ContentBody>
           <Footer>
             <Division>
               <Button
@@ -230,20 +232,6 @@ const Description = styled.div`
   word-break: break-all;
 `;
 
-const CourseContent = styled.main`
-  width: 100%;
-  height: auto;
-  padding: 10px;
-  color: #000;
-  border-bottom: 1px solid #000;
-  word-break: break-all;
-
-  overflow-y: scroll;
-  ::-webkit-scrollbar {
-    display: none;
-  }
-`;
-
 const Footer = styled.div`
   width: 100%;
   height: 70px;
@@ -254,21 +242,19 @@ const Footer = styled.div`
     height: 150px;
     flex-direction: column;
   }
-
 `;
 
 const Division = styled.div`
   width: 150px;
   height: 80px;
   margin: 5px;
-
 `;
 
 const Select = styled.select`
   width: 250px;
   height: 50px;
 
-  @media(max-width: 280px){
+  @media (max-width: 280px) {
     width: 100%;
   }
 `;
@@ -279,7 +265,7 @@ const Enroll = styled.div`
 
   flex-direction: column;
 
-  @media(max-width: 280px){
+  @media (max-width: 280px) {
     width: 100%;
   }
 `;
@@ -303,4 +289,30 @@ const StudentList = styled.div`
 
 const StudentName = styled.section`
   width: 100%;
+`;
+
+const CourseContent = styled.main`
+  width: 100%;
+  height: auto;
+  padding: 10px;
+  color: #000;
+  border-bottom: 1px solid #000;
+  word-break: break-all;
+
+  overflow-y: scroll;
+  ::-webkit-scrollbar {
+    display: none;
+  }
+`;
+
+const ContentBody = styled.main`
+  width: 100%;
+  height: 100%;
+  color: #000;
+  word-break: break-all;
+
+  overflow-y: scroll;
+  ::-webkit-scrollbar {
+    display: none;
+  }
 `;
