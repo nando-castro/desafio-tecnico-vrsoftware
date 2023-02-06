@@ -101,7 +101,7 @@ export const Course = () => {
           setData={setData}
         />
       ) : (
-        <>
+        <Body>
           {courses.length > 0 ? (
             <ContentBody>{renderCourses()}</ContentBody>
           ) : (
@@ -116,7 +116,7 @@ export const Course = () => {
               background={"#00B187"}
             />
           </Footer>
-        </>
+        </Body>
       )}
     </Container>
   );
@@ -143,17 +143,19 @@ const ContentBody = styled.main`
   }
 `;
 
-const Footer = styled.div`
-  width: 90%;
-  height: 60px;
+const Body = styled.main`
+  width: 100%;
+  height: 100%;
+`;
 
-  position: fixed;
-  bottom: 42px;
+const Footer = styled.div`
+  width: 100%;
+  height: 50px;
 
   border-radius: 0 0 20px 20px;
 `;
 
 const Message = styled.div`
   width: 100%;
-  height: 100%;
+  height: 90%;
 `;

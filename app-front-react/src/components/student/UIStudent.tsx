@@ -76,7 +76,7 @@ export const UIStudent = ({
 
     if (response === true) {
       api
-        .delete(`/course/${data.id}`)
+        .delete(`/student/${data.id}`)
         .then((res) => {
           window.location.reload();
         })

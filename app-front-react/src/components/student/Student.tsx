@@ -90,7 +90,7 @@ export const Student = () => {
           setData={setData}
         />
       ) : (
-        <>
+        <Body>
           {students.length > 0 ? (
             <ContentBody>{renderStudents()}</ContentBody>
           ) : (
@@ -105,7 +105,7 @@ export const Student = () => {
               background={"#00B187"}
             />
           </Footer>
-        </>
+        </Body>
       )}
     </Container>
   );
@@ -132,14 +132,19 @@ const ContentBody = styled.main`
   }
 `;
 
+const Body = styled.main`
+  width: 100%;
+  height: 100%;
+`;
+
 const Footer = styled.div`
   width: 100%;
-  height: 60px;
+  height: 50px;
 
   border-radius: 0 0 20px 20px;
 `;
 
 const Message = styled.div`
   width: 100%;
-  height: 100%;
+  height: 90%;
 `;
