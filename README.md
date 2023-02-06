@@ -1,4 +1,4 @@
-<h1 align="center">:file_cabinet: Desafio Vr Software</h1>
+<h1 align="center">:file_cabinet: Documentação do Projeto</h1>
 
 ## :memo: Descrição
 Projeto desenvolvido para o processo seletivo da empresa Vr Software.
