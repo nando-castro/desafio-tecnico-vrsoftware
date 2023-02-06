@@ -31,7 +31,6 @@ export const FormCourse = ({
     api
       .post(`/course`, { ...courseData })
       .then((res) => {
-        console.log(res.data);
         setUpdate(!update);
         setOpenForm(false);
       })
@@ -44,7 +43,6 @@ export const FormCourse = ({
     api
       .put(`/course/${data.id}`, { ...courseData })
       .then((res) => {
-        console.log(res.data);
         setUpdate(!update);
         setOpenForm(false);
       })
@@ -99,10 +97,8 @@ const Container = styled.div`
 
     @media (max-width: 365px) {
       width: 100%;
+    }
   }
-  }
-
-
 `;
 
 const Cancel = styled.div`
