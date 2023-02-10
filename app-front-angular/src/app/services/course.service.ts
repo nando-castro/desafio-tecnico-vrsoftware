@@ -17,6 +17,6 @@ export class CourseService {
   }
 
   createCourse(data: Course): Observable<FormData> {
-    return this.http.post<FormData>(`${this.baseApiUrl}/student`, data);
+    return this.http.post<FormData>(`${this.baseApiUrl}/course`, data);
   }
 }
