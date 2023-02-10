@@ -1,0 +1,34 @@
+<form (ngSubmit)="submit()" [formGroup]="courseForm" #formDir="ngForm">
+  <div class="form-group">
+    <label for="description">Descricao</label>
+    <input
+      type="text"
+      placeholder="Descricao"
+      formControlName="description"
+      required
+    />
+    <div
+      *ngIf="description.invalid && formDir.submitted"
+      class="validation-error"
+    >
+      <p *ngIf="description.errors?.['required']">
+        A descricao eh obrigatoria!
+      </p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="course_content">Ementa</label>
+    <textarea
+      placeholder="Ementa"
+      formControlName="course_content"
+      required
+    ></textarea>
+  </div>
+  <div
+    *ngIf="courseContent.invalid && formDir.submitted"
+    class="validation-error"
+  >
+    <p *ngIf="courseContent.errors?.['required']">A Ementa eh obrigatoria!</p>
+  </div>
+  <input type="submit" value="{{ btnText }}" />
+</form>

@@ -10,9 +10,11 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/pages/home/home.component';
 import { CourseComponent } from './components/course/course.component';
 import { StudentComponent } from './components/student/student.component';
+import { FormCourseComponent } from './components/form-course/form-course.component';
+import { NewCourseComponent } from './components/pages/new-course/new-course.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, FooterComponent, HomeComponent, CourseComponent, StudentComponent],
+  declarations: [AppComponent, HeaderComponent, FooterComponent, HomeComponent, CourseComponent, StudentComponent, FormCourseComponent, NewCourseComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

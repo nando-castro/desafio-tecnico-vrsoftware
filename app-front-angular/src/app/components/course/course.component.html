@@ -1,4 +1,7 @@
 <div class="course-container">
+  <div class="options">
+    <a routerLink="/course/new">Adicionar</a>
+  </div>
   <h1>Cursos</h1>
   <div *ngFor="let course of courses">
     <h2>{{ course.description }}</h2>
