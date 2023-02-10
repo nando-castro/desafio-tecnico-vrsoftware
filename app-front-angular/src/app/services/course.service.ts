@@ -19,4 +19,8 @@ export class CourseService {
   createCourse(data: Course): Observable<FormData> {
     return this.http.post<FormData>(`${this.baseApiUrl}/course`, data);
   }
+
+   remove(id: number) {
+    return this.http.delete<Course>(`${this.baseApiUrl}/course/${id}`);
+  }
 }

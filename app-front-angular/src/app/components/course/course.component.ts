@@ -20,4 +20,8 @@ export class CourseComponent implements OnInit {
   ngOnInit(): any {
     this.courseService.getCourses().subscribe((courses) => (this.courses = courses));
   }
+
+  removeCourse(course: Course) {
+    this.courseService.remove(course.id!).subscribe();
+  }
 }
