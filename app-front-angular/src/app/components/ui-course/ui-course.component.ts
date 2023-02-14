@@ -1,7 +1,7 @@
-import { Course } from './../../Course';
 import { Component, OnInit } from '@angular/core';
-import { Route, ActivatedRoute } from '@angular/router';
+import { Route, ActivatedRoute, Router } from '@angular/router';
 import { CourseService } from 'src/app/services/course.service';
+import { Course } from './../../Course';
 
 @Component({
   selector: 'app-ui-course',
@@ -9,12 +9,13 @@ import { CourseService } from 'src/app/services/course.service';
   styleUrls: ['./ui-course.component.css'],
 })
 export class UiCourseComponent implements OnInit {
-  course?: Course;
+  course!: Course;
   students?: any;
 
   constructor(
     private courseService: CourseService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -23,5 +24,10 @@ export class UiCourseComponent implements OnInit {
     this.courseService.getCourse(id).subscribe(i => this.course = i)
 
     this.courseService.getStudentsEnrollCourse(id).subscribe(i => this.students = i)
+  }
+
+  async removeCourse(course: Course) {
+    await this.courseService.remove(course.id!).subscribe();
+    this.router.navigate(['/course']);
   }
 }

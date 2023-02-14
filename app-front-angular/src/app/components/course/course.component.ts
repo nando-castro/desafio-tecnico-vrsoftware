@@ -4,7 +4,6 @@ import { CourseService } from 'src/app/services/course.service';
 
 import { environment } from './../../../environments/environment';
 import { Router } from '@angular/router';
-import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-course',
@@ -17,19 +16,9 @@ export class CourseComponent implements OnInit {
 
   baseApiUrl = environment.baseApiUrl;
 
-  constructor(private courseService: CourseService, private router:  Router, private location: Location) {}
+  constructor(private courseService: CourseService, private router:  Router) {}
 
   ngOnInit(): any {
     this.courseService.getCourses().subscribe((courses) => (this.courses = courses));
-  }
-
-  async removeCourse(course: Course) {
-    await this.courseService.remove(course.id!).subscribe();
-    // this.load();
-    this.courseService.remove(course.id!).subscribe();
-  }
-
-  load() {
-    location.reload()
   }
 }
