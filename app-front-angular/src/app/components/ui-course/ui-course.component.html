@@ -1,8 +1,8 @@
 <div>
-  <h1>Pagina individual: {{course?.description}}</h1>
+  <h1>Pagina individual: {{ course.description }}</h1>
   <button (click)="removeCourse(course)">Excluir</button>
   <h3>Alunos matriculados</h3>
   <div *ngFor="let student of students">
-    <p>{{student.student.name}}</p>
+    <p>{{ student.student.name }}</p>
   </div>
 </div>

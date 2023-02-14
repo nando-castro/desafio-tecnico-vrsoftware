@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Course } from '../Course';
 import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +11,7 @@ import { environment } from 'src/environments/environment';
 export class CourseService {
   private baseApiUrl = environment.baseApiUrl;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   getCourses(): Observable<Course[]> {
     return this.http.get<Course[]>(`${this.baseApiUrl}/courses`);
@@ -28,7 +29,8 @@ export class CourseService {
     return this.http.post<FormData>(`${this.baseApiUrl}/course`, data);
   }
 
-  remove(id: number) {
+  remove(id: number){
     return this.http.delete<Course>(`${this.baseApiUrl}/course/${id}`);
   }
 }
+

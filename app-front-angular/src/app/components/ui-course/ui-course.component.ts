@@ -21,13 +21,30 @@ export class UiCourseComponent implements OnInit {
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
 
-    this.courseService.getCourse(id).subscribe(i => this.course = i)
+    this.courseService.getCourse(id).subscribe((i) => (this.course = i));
 
-    this.courseService.getStudentsEnrollCourse(id).subscribe(i => this.students = i)
+    this.courseService
+      .getStudentsEnrollCourse(id)
+      .subscribe((i) => (this.students = i));
   }
 
   async removeCourse(course: Course) {
-    await this.courseService.remove(course.id!).subscribe();
-    this.router.navigate(['/course']);
+    await this.courseService.remove(course.id!).subscribe(
+      (res) => res,
+      (err) => {
+        if (err.status == 200) {
+          alert('Curso excluído com sucesso!');
+          this.router.navigate(['/course']);
+        }
+        if (err.status == 401) {
+          return alert(
+            'O curso possui alunos matriculados! Por favor, primeiro remova os alunos matriculados!'
+          );
+        }
+        if (err.status == 404) {
+          return alert('Ocorreu um erro!');
+        }
+      }
+    );
   }
 }
