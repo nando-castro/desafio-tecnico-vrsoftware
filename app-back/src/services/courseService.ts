@@ -7,6 +7,12 @@ export async function getCourses() {
   return await courseRepository.findCourses();
 }
 
+export async function getCourse(id: number) {
+  const courseExixts = await courseRepository.findCourseById(id);
+  if(!courseExixts) throw notFoundError('Course not exists!');
+  return courseExixts;
+}
+
 export async function createCourse(data: TypeCourse) {
   const courseExists = await courseRepository.findCourseByDescription(data.description);
   if (data.description.length > 50) throw unprocessableEntity("Description must be less than 50 characters.")

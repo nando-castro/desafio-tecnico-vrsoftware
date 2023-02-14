@@ -6,6 +6,13 @@ export async function getStudents(req: Request, res: Response) {
   res.status(200).send(data);
 }
 
+export async function getStudent(req: Request, res: Response) {
+  const {id} = req.params;
+  const data = await studentService.getstudent(Number(id));
+  res.status(200).send(data);
+}
+
+
 export async function createStudent(req: Request, res: Response) {
   const data: { name: string } = req.body;
   await studentService.createStudent(data);
