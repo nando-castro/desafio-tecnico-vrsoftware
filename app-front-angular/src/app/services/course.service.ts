@@ -21,8 +21,8 @@ export class CourseService {
     return this.http.get<Course>(`${this.baseApiUrl}/course/${id}`);
   }
 
-  getStudentsEnrollCourse(id: number): Observable<Course> {
-    return this.http.get<Course>(`${this.baseApiUrl}/course/${id}/students`);
+  getStudentsEnrollCourse(id: number) {
+    return this.http.get(`${this.baseApiUrl}/course/${id}/students`);
   }
 
   createCourse(data: Course): Observable<FormData> {
@@ -31,6 +31,10 @@ export class CourseService {
 
   remove(id: number){
     return this.http.delete<Course>(`${this.baseApiUrl}/course/${id}`);
+  }
+
+  removeEnrollment(id: number){
+    return this.http.delete(`${this.baseApiUrl}/enrollment/${id}`);
   }
 }
 

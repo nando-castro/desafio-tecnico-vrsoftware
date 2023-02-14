@@ -2,7 +2,8 @@
   <h1>Pagina individual: {{ course.description }}</h1>
   <button (click)="removeCourse(course)">Excluir</button>
   <h3>Alunos matriculados</h3>
-  <div *ngFor="let student of students">
-    <p>{{ student.student.name }}</p>
+  <div *ngFor="let enrollment of students">
+    <p>{{ enrollment.student.name }}</p>
+    <button (click)="removeEnrollment(enrollment.id)">Excluir</button>
   </div>
 </div>

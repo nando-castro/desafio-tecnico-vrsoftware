@@ -10,7 +10,7 @@ import { Course } from './../../Course';
 })
 export class UiCourseComponent implements OnInit {
   course!: Course;
-  students?: any;
+  students: any;
 
   constructor(
     private courseService: CourseService,
@@ -25,7 +25,7 @@ export class UiCourseComponent implements OnInit {
 
     this.courseService
       .getStudentsEnrollCourse(id)
-      .subscribe((i) => (this.students = i));
+      .subscribe((student) => (this.students = student));
   }
 
   async removeCourse(course: Course) {
@@ -46,5 +46,12 @@ export class UiCourseComponent implements OnInit {
         }
       }
     );
+  }
+
+  async removeEnrollment(id: number) {
+    this.students = this.students.filter(
+      (i: any, index: number) => this.students[index].id !== id
+    );
+    await this.courseService.removeEnrollment(id).subscribe();
   }
 }
