@@ -16,11 +16,19 @@ export class CourseService {
     return this.http.get<Course[]>(`${this.baseApiUrl}/courses`);
   }
 
+  getCourse(id: number): Observable<Course> {
+    return this.http.get<Course>(`${this.baseApiUrl}/course/${id}`);
+  }
+
+  getStudentsEnrollCourse(id: number): Observable<Course> {
+    return this.http.get<Course>(`${this.baseApiUrl}/course/${id}/students`);
+  }
+
   createCourse(data: Course): Observable<FormData> {
     return this.http.post<FormData>(`${this.baseApiUrl}/course`, data);
   }
 
-   remove(id: number) {
+  remove(id: number) {
     return this.http.delete<Course>(`${this.baseApiUrl}/course/${id}`);
   }
 }

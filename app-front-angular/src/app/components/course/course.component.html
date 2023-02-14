@@ -4,7 +4,7 @@
   </div>
   <h1>Cursos</h1>
   <div *ngFor="let course of courses">
-    <h2>{{ course.description }}</h2>
+    <a routerLink="/course/{{course.id}}" >{{ course.description }}</a>
     <button (click)="removeCourse(course)">Excluir</button>
   </div>
 </div>

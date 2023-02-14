@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./new-course.component.css'],
 })
 export class NewCourseComponent implements OnInit {
-  btnText = 'Adicionar Curso';
+  btnText = 'Cadastrar';
 
   constructor(private courseService: CourseService, private router: Router) {}
 
