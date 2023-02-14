@@ -29,12 +29,15 @@ export class CourseService {
     return this.http.post<FormData>(`${this.baseApiUrl}/course`, data);
   }
 
-  remove(id: number){
+  remove(id: number) {
     return this.http.delete<Course>(`${this.baseApiUrl}/course/${id}`);
   }
 
-  removeEnrollment(id: number){
+  removeEnrollment(id: number) {
     return this.http.delete(`${this.baseApiUrl}/enrollment/${id}`);
   }
-}
 
+  update(id: number, data: Course): Observable<FormData> {
+    return this.http.put<FormData>(`${this.baseApiUrl}/course/${id}`, data);
+  }
+}

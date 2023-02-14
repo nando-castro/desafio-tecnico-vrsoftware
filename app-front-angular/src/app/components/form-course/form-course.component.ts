@@ -10,6 +10,7 @@ import { Course } from 'src/app/Course';
 export class FormCourseComponent implements OnInit {
   @Output() onSubmit = new EventEmitter<Course>();
   @Input() btnText!: string;
+  @Input() courseData: Course | null = null;
 
   courseForm!: FormGroup;
 
@@ -17,9 +18,9 @@ export class FormCourseComponent implements OnInit {
 
   ngOnInit(): void {
     this.courseForm = new FormGroup({
-      id: new FormControl(''),
-      description: new FormControl('', [Validators.required]),
-      course_content: new FormControl('', [Validators.required]),
+      id: new FormControl(this.courseData ? this.courseData.id : ''),
+      description: new FormControl(this.courseData ? this.courseData.description : '', [Validators.required]),
+      course_content: new FormControl(this.courseData ? this.courseData.course_content : '', [Validators.required]),
     });
   }
 

@@ -13,9 +13,10 @@ import { StudentComponent } from './components/student/student.component';
 import { FormCourseComponent } from './components/form-course/form-course.component';
 import { NewCourseComponent } from './components/pages/new-course/new-course.component';
 import { UiCourseComponent } from './components/ui-course/ui-course.component';
+import { EditCourseComponent } from './components/pages/edit-course/edit-course.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, FooterComponent, HomeComponent, CourseComponent, StudentComponent, FormCourseComponent, NewCourseComponent, UiCourseComponent],
+  declarations: [AppComponent, HeaderComponent, FooterComponent, HomeComponent, CourseComponent, StudentComponent, FormCourseComponent, NewCourseComponent, UiCourseComponent, EditCourseComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
