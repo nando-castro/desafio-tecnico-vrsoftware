@@ -2,7 +2,7 @@
   <div class="actions">
     <h1>{{ student.name }}</h1>
     <button (click)="removeStudent(student)">Excluir</button>
-    <a routerLink="/course/edit/{{ student.id }}">Editar</a>
+    <a routerLink="/student/edit/{{ student.id }}">Editar</a>
   </div>
   <h3>Cursos matriculado</h3>
   <div class="items" *ngFor="let enrollment of courses">

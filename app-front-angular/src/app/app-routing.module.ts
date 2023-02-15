@@ -1,3 +1,4 @@
+import { EditStudentComponent } from './components/pages/edit-student/edit-student.component';
 import { UiStudentComponent } from './components/ui-student/ui-student.component';
 import { NewStudentComponent } from './components/pages/new-student/new-student.component';
 import { EditCourseComponent } from './components/pages/edit-course/edit-course.component';
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'course/:id', component: UiCourseComponent },
   { path: 'student/:id', component: UiStudentComponent },
   { path: 'course/edit/:id', component: EditCourseComponent },
+  { path: 'student/edit/:id', component: EditStudentComponent },
 ];
 
 @NgModule({

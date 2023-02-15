@@ -17,9 +17,10 @@ import { EditCourseComponent } from './components/pages/edit-course/edit-course.
 import { NewStudentComponent } from './components/pages/new-student/new-student.component';
 import { FormStudentComponent } from './components/form-student/form-student.component';
 import { UiStudentComponent } from './components/ui-student/ui-student.component';
+import { EditStudentComponent } from './components/pages/edit-student/edit-student.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, FooterComponent, HomeComponent, CourseComponent, StudentComponent, FormCourseComponent, NewCourseComponent, UiCourseComponent, EditCourseComponent, NewStudentComponent, FormStudentComponent, UiStudentComponent],
+  declarations: [AppComponent, HeaderComponent, FooterComponent, HomeComponent, CourseComponent, StudentComponent, FormCourseComponent, NewCourseComponent, UiCourseComponent, EditCourseComponent, NewStudentComponent, FormStudentComponent, UiStudentComponent, EditStudentComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
