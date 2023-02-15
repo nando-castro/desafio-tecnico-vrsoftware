@@ -1,8 +1,8 @@
 <div class="container">
   <div class="actions">
     <h1>{{ course.description }}</h1>
-    <button (click)="removeCourse(course)">Excluir</button>
     <a routerLink="/course/edit/{{ course.id }}">Editar</a>
+    <button (click)="removeCourse(course)">Excluir</button>
   </div>
   <p>Ementa: {{ course.course_content }}</p>
   <h3>Alunos matriculados</h3>
