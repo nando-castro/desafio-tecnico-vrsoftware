@@ -13,7 +13,7 @@ export class StudentService{
 
   constructor(private http: HttpClient, private router: Router) {}
 
-  gwtStudents(): Observable<Student[]> {
+  getStudents(): Observable<Student[]> {
     return this.http.get<Student[]>(`${this.baseApiUrl}/students`);
   }
 
