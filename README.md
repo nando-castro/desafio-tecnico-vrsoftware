@@ -9,6 +9,7 @@ Projeto desenvolvido para o processo seletivo da empresa Vr Software.
 
 ## :wrench: Tecnologias utilizadas
 * Node.Js;
+* Angular;
 * React.Js;
 * PostgreSQL;
 * TypeScript;
