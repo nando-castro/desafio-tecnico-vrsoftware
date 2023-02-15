@@ -4,6 +4,7 @@
     <button (click)="removeCourse(course)">Excluir</button>
     <a routerLink="/course/edit/{{ course.id }}">Editar</a>
   </div>
+  <p>Ementa: {{ course.course_content }}</p>
   <h3>Alunos matriculados</h3>
   <div class="items" *ngFor="let enrollment of students">
     <p>{{ enrollment.student.name }}</p>

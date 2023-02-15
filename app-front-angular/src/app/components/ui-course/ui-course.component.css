@@ -9,7 +9,10 @@ h1 {
 
 h3 {
   padding: 20px;
-  background: blue;
+}
+
+p {
+  font-size: 1.3em;
 }
 
 .actions {
