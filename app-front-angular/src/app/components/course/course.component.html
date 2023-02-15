@@ -1,9 +1,7 @@
 <div class="course-container">
-  <div class="options">
-    <a routerLink="/course/new">Adicionar</a>
-  </div>
+  <div class="options" routerLink="/course/new">Adicionar</div>
   <h1>Cursos</h1>
-  <div *ngFor="let course of courses">
-    <a routerLink="/course/{{course.id}}" >{{ course.description }}</a>
+  <div class="items" *ngFor="let course of courses">
+    <a routerLink="/course/{{ course.id }}">{{ course.description }}</a>
   </div>
 </div>

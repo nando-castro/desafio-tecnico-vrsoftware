@@ -1,0 +1,25 @@
+div {
+  padding: 10px;
+}
+
+.options {
+  width: 100px;
+  text-align: center;
+  border: 1px solid #000;
+  cursor: pointer;
+}
+
+h1 {
+  width: 100%;
+  text-align: center;
+}
+
+.options:hover{
+  transition: 0.4s;
+  background: #08F26E;
+}
+
+.items {
+  border: 1px solid #000;
+  margin-bottom: 2px;
+}
