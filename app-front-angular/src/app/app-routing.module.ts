@@ -1,3 +1,5 @@
+import { UiStudentComponent } from './components/ui-student/ui-student.component';
+import { NewStudentComponent } from './components/pages/new-student/new-student.component';
 import { EditCourseComponent } from './components/pages/edit-course/edit-course.component';
 import { UiCourseComponent } from './components/ui-course/ui-course.component';
 import { NewCourseComponent } from './components/pages/new-course/new-course.component';
@@ -12,7 +14,9 @@ const routes: Routes = [
   { path: 'course', component: CourseComponent },
   { path: 'student', component: StudentComponent },
   { path: 'course/new', component: NewCourseComponent },
+  { path: 'student/new', component: NewStudentComponent },
   { path: 'course/:id', component: UiCourseComponent },
+  { path: 'student/:id', component: UiStudentComponent },
   { path: 'course/edit/:id', component: EditCourseComponent },
 ];
 

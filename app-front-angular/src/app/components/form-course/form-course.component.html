@@ -1,10 +1,10 @@
 <form (ngSubmit)="submit()" [formGroup]="courseForm" #formDir="ngForm">
   <input type="hidden" formControlName="id" />
   <div class="form-group">
-    <label for="description">Descricao</label>
+    <label for="description">Descrição</label>
     <input
       type="text"
-      placeholder="Descricao"
+      placeholder="Descrição"
       formControlName="description"
       required
     />
@@ -13,7 +13,7 @@
       class="validation-error"
     >
       <p *ngIf="description.errors?.['required']">
-        A descricao eh obrigatoria!
+        A descrição é obrigatória!
       </p>
     </div>
   </div>
@@ -29,7 +29,7 @@
     *ngIf="courseContent.invalid && formDir.submitted"
     class="validation-error"
   >
-    <p *ngIf="courseContent.errors?.['required']">A Ementa eh obrigatoria!</p>
+    <p *ngIf="courseContent.errors?.['required']">A ementa é obrigatória!</p>
   </div>
   <input type="submit" value="{{ btnText }}" />
 </form>

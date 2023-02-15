@@ -1,0 +1,21 @@
+<form (ngSubmit)="submit()" [formGroup]="studentForm" #formDir="ngForm">
+  <input type="hidden" formControlName="id" />
+  <div class="form-group">
+    <label for="name">Nome</label>
+    <input
+      type="text"
+      placeholder="Nome"
+      formControlName="name"
+      required
+    />
+    <div
+      *ngIf="name.invalid && formDir.submitted"
+      class="validation-error"
+    >
+      <p *ngIf="name.errors?.['required']">
+        O nome é obrigatório!
+      </p>
+    </div>
+  </div>
+  <input type="submit" value="{{ btnText }}" />
+</form>
