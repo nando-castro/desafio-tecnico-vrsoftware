@@ -1,1 +1,12 @@
-<p>ui-student works!</p>
+<div class="container">
+  <div class="actions">
+    <h1>{{ student.name }}</h1>
+    <button (click)="removeStudent(student)">Excluir</button>
+    <a routerLink="/course/edit/{{ student.id }}">Editar</a>
+  </div>
+  <h3>Cursos matriculado</h3>
+  <div class="items" *ngFor="let enrollment of courses">
+    <p>{{ enrollment.course.description }}</p>
+    <button (click)="removeEnrollment(enrollment.id)">Remover</button>
+  </div>
+</div>
