@@ -12,6 +12,7 @@ div {
 h1 {
   width: 100%;
   text-align: center;
+  padding: .4em;
 }
 
 .options:hover{
