@@ -6,6 +6,7 @@ import { schemaValidateMiddleware } from "../middlewares/schemaValidateMiddlware
 const courseRouter = Router();
 
 courseRouter.get("/courses", courseController.getCourses);
+courseRouter.get("/course/:id", courseController.getCourse);
 courseRouter.post("/course", schemaValidateMiddleware(courseSchema), courseController.createCourse);
 courseRouter.put("/course/:id", schemaValidateMiddleware(courseSchema), courseController.updateCourse);
 courseRouter.delete("/course/:id", courseController.deleteCourse);

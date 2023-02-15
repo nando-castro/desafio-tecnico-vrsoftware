@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="actions">
+    <h1>{{ course.description }}</h1>
+    <a routerLink="/course/edit/{{ course.id }}">Editar</a>
+    <button (click)="removeCourse(course)">Excluir</button>
+  </div>
+  <p>Ementa: {{ course.course_content }}</p>
+  <h3>Alunos matriculados</h3>
+  <div class="items" *ngFor="let enrollment of students">
+    <p>{{ enrollment.student.name }}</p>
+    <button (click)="removeEnrollment(enrollment.id)">Remover</button>
+  </div>
+</div>

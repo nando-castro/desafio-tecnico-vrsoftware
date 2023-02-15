@@ -1,0 +1,4 @@
+<div *ngIf="course">
+  <h2>Editando o curso</h2>
+  <app-form-course (onSubmit)="editHandler($event)" [courseData]="course" [btnText]="btnText"></app-form-course>
+</div>

@@ -1,0 +1,7 @@
+<div class="student-container">
+  <div class="options" routerLink="/student/new">Adicionar</div>
+  <h1>Alunos</h1>
+  <div class="items" *ngFor="let student of students">
+    <a routerLink="/student/{{ student.id }}">{{ student.name }}</a>
+  </div>
+</div>

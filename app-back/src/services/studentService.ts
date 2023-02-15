@@ -7,6 +7,12 @@ export async function getStudents() {
     return await studentRepository.getStudents();
 }
 
+export async function getstudent(id: number) {
+    const studentexists = await studentRepository.findById(id);
+    if(!studentexists) throw notFoundError('Student not exists!');
+    return studentexists;
+  }
+
 export async function createStudent(data: TypeStudent) {
     const studentExists = await studentRepository.findByName(data.name);
     if (data.name.length > 20) throw unprocessableEntity("Name must be less than 20 characters.")
