@@ -245,6 +245,17 @@ Instale as dependências do projeto:
 ```
 
 Para iniciar o projeto é necessário dar o seguinte comando:
+
+**No Angular:**
+
+Você pode configurar a url da api no diretório environments dentro do diretório app.
+
+```
+ng serve
+```
+
+
+**No React:**
 ```
 npm run dev
 ```
